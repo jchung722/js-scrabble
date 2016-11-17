@@ -44,14 +44,23 @@ Scrabble.highestScoreFrom = function(arrayOfWords) {
     if (Scrabble.score(word) > bestScore) {
       bestScore = Scrabble.score(word);
       bestWord = word;
+    } else if (Scrabble.score(word) == bestScore) {
+      if (bestWord.length > word.length && bestWord.length != 7) {
+        bestWord = word;
+      } else if (word.length > bestWord.length && word.length == 7) {
+        bestWord = word;
+      }
     }
   });
   return bestWord;
 };
 
-console.log(Scrabble.score("hi"));
-console.log(Scrabble.score("elevens"));
-console.log(Scrabble.highestScoreFrom(["hello", "blah", "test", "elevens"]));
+console.log(Scrabble.score("hi")); //5
+console.log(Scrabble.score("elevens")); //60
+console.log(Scrabble.highestScoreFrom(["hello", "blah", "test", "elevens"])); //should return "elevens"
+console.log(Scrabble.highestScoreFrom(["hi", "dig"])); //should return "hi"
+console.log(Scrabble.highestScoreFrom(["lost", "tons"])); //should return "lost"
+console.log(Scrabble.highestScoreFrom(["AEIOULD", "QZQZQJ"])); //should return "AEIOULD"
 
 // YOUR CODE HERE
 // Scrabble.prototype.helloWorld = function() {
