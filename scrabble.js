@@ -63,7 +63,7 @@ var Player = function(name) {
 Player.prototype = Scrabble;
 
 Player.prototype.play = function(word) {
-  if (hasWon() === true) {
+  if (this.hasWon() === true) {
     return false;
   }
   this.plays.push(word);
@@ -71,13 +71,26 @@ Player.prototype.play = function(word) {
 
 Player.prototype.totalScore = function() {
   var totalScore = 0;
-  
-}
+  this.plays.forEach(function(word){
+    totalScore += Scrabble.score(word);
+  });
+  return totalScore;
+};
+
+Player.prototype.hasWon = function() {
+  if (this.totalScore() >= 100) {
+    return true;
+  } else {
+    return false;
+  }
+};
 
 jess = new Player("Jessica");
 jess.play("hi");
 jess.play("another");
 console.log(jess);
+console.log(jess.totalScore());
+console.log(jess.hasWon());
 
 
 console.log(Scrabble.score("hi")); //5
