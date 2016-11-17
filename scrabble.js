@@ -17,7 +17,7 @@ var letters = {
   "QZ": 10
 };
 
-var Scrabble = function() {
+var Scrabble = { //is it possible to initialize this as a constructor? function()
 
 };
 
@@ -54,6 +54,31 @@ Scrabble.highestScoreFrom = function(arrayOfWords) {
   });
   return bestWord;
 };
+
+var Player = function(name) {
+  this._name = name;
+  this.plays = [];
+};
+
+Player.prototype = Scrabble;
+
+Player.prototype.play = function(word) {
+  if (hasWon() === true) {
+    return false;
+  }
+  this.plays.push(word);
+};
+
+Player.prototype.totalScore = function() {
+  var totalScore = 0;
+  
+}
+
+jess = new Player("Jessica");
+jess.play("hi");
+jess.play("another");
+console.log(jess);
+
 
 console.log(Scrabble.score("hi")); //5
 console.log(Scrabble.score("elevens")); //60
