@@ -60,7 +60,7 @@ var Player = function(name) {
   this.plays = [];
 };
 
-Player.prototype = Scrabble;
+Player.prototype = Scrabble; //I thought this would make the Player object inherit form Scrabble, but it basically does nothing. If I take it out, everything works the same...
 
 Player.prototype.play = function(word) {
   if (this.hasWon() === true) {
@@ -111,8 +111,8 @@ console.log(Scrabble.highestScoreFrom(["lost", "tons"])); //should return "lost"
 console.log(Scrabble.highestScoreFrom(["AEIOULD", "QZQZQJ"])); //should return "AEIOULD"
 
 // YOUR CODE HERE
-// Scrabble.prototype.helloWorld = function() {
-//   return 'hello world!';
-// };
-//
-// module.exports = Scrabble;
+Scrabble.helloWorld = function() {
+  return 'hello world!';
+};
+
+module.exports = Scrabble;
