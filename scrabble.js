@@ -85,12 +85,22 @@ Player.prototype.hasWon = function() {
   }
 };
 
+Player.prototype.highestScoringWord = function() {
+  return Scrabble.highestScoreFrom(this.plays);
+};
+
+Player.prototype.highestWordScore = function() {
+  return Scrabble.score(this.highestScoringWord());
+};
+
 jess = new Player("Jessica");
 jess.play("hi");
 jess.play("another");
 console.log(jess);
 console.log(jess.totalScore());
 console.log(jess.hasWon());
+console.log(jess.highestScoringWord());
+// console.log(jess.highestWordScore());
 
 
 console.log(Scrabble.score("hi")); //5
